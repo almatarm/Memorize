@@ -11,6 +11,12 @@
 		446B972E29B5B6BF006974BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B972D29B5B6BF006974BE /* ContentView.swift */; };
 		446B973029B5B6C4006974BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446B972F29B5B6C4006974BE /* Assets.xcassets */; };
 		446B973329B5B6C4006974BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446B973229B5B6C4006974BE /* Preview Assets.xcassets */; };
+		446B973A29B6FFFA006974BE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B973929B6FFFA006974BE /* Game.swift */; };
+		446B973D29B7006B006974BE /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B973C29B7006B006974BE /* Card.swift */; };
+		446B974029B70227006974BE /* EmojiGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B973F29B70227006974BE /* EmojiGameVM.swift */; };
+		446B974229B7036D006974BE /* CardsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B974129B7036D006974BE /* CardsTheme.swift */; };
+		446B974529B857CA006974BE /* EmojiCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B974429B857C9006974BE /* EmojiCardView.swift */; };
+		446B974729B87879006974BE /* EmojiThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B974629B87879006974BE /* EmojiThemes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		446B972D29B5B6BF006974BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		446B972F29B5B6C4006974BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		446B973229B5B6C4006974BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		446B973929B6FFFA006974BE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		446B973C29B7006B006974BE /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		446B973F29B70227006974BE /* EmojiGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGameVM.swift; sourceTree = "<group>"; };
+		446B974129B7036D006974BE /* CardsTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTheme.swift; sourceTree = "<group>"; };
+		446B974429B857C9006974BE /* EmojiCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCardView.swift; sourceTree = "<group>"; };
+		446B974629B87879006974BE /* EmojiThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiThemes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +63,10 @@
 		446B972A29B5B6BF006974BE /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				446B973B29B70051006974BE /* Models */,
+				446B973E29B7020A006974BE /* ViewModels */,
+				446B974329B8578C006974BE /* View */,
 				446B972B29B5B6BF006974BE /* MemorizeApp.swift */,
-				446B972D29B5B6BF006974BE /* ContentView.swift */,
 				446B972F29B5B6C4006974BE /* Assets.xcassets */,
 				446B973129B5B6C4006974BE /* Preview Content */,
 			);
@@ -65,6 +79,34 @@
 				446B973229B5B6C4006974BE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		446B973B29B70051006974BE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				446B973929B6FFFA006974BE /* Game.swift */,
+				446B973C29B7006B006974BE /* Card.swift */,
+				446B974129B7036D006974BE /* CardsTheme.swift */,
+				446B974629B87879006974BE /* EmojiThemes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		446B973E29B7020A006974BE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				446B973F29B70227006974BE /* EmojiGameVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		446B974329B8578C006974BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				446B972D29B5B6BF006974BE /* ContentView.swift */,
+				446B974429B857C9006974BE /* EmojiCardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446B974529B857CA006974BE /* EmojiCardView.swift in Sources */,
 				446B972E29B5B6BF006974BE /* ContentView.swift in Sources */,
+				446B973A29B6FFFA006974BE /* Game.swift in Sources */,
 				446B972C29B5B6BF006974BE /* MemorizeApp.swift in Sources */,
+				446B974229B7036D006974BE /* CardsTheme.swift in Sources */,
+				446B974029B70227006974BE /* EmojiGameVM.swift in Sources */,
+				446B974729B87879006974BE /* EmojiThemes.swift in Sources */,
+				446B973D29B7006B006974BE /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +323,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +353,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
