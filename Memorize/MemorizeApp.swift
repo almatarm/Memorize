@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-    @StateObject var emojiGame = EmojiGameVM(numPairsOfCards: 4, theme: EmojiThemes.vehicles)
+    @StateObject private var emojiGame = EmojiGameVM(numPairsOfCards: 4, theme: EmojiThemes.randomTheme())
     
     var body: some Scene {
         WindowGroup {
-            ContentView(emojiGame: emojiGame)
+            GameView(emojiGame: emojiGame)
         }
     }
 }

@@ -8,7 +8,9 @@
 import Foundation
 
 struct Game<CardContent> where CardContent: Equatable {
+    var score = 0
     var numPairsOfCards: Int
+    var theme: CardsTheme<CardContent>?
     private(set) var cards: [Card<CardContent>] = []
     
     var theFirstFlippedCard: Int? {
@@ -34,68 +36,35 @@ struct Game<CardContent> where CardContent: Equatable {
                     cards[theOnlyFlipedCard].isMatched = true
                 }
                 cards[chosenCardIdx].isFlipped = true
+                
+                refreshScore(cards[chosenCardIdx], cards[theOnlyFlipedCard])
+                cards[chosenCardIdx].seen = true
+                cards[theOnlyFlipedCard].seen = true
             } else {
                 theFirstFlippedCard = chosenCardIdx
             }
-            
-//            print("ChosenCardIdx \(chosenCardIdx), isFlipped: \(cards[chosenCardIdx].isFlipped)")
-//            cards[chosenCardIdx].isFlipped = true;
-//
-//            if let theSecondFlippedCard = theSecondFlippedCard, let theFirstFlippedCard = theFirstFlippedCard {
-//                cards[theFirstFlippedCard].isFlipped = false
-//                cards[theSecondFlippedCard].isFlipped = false
-//                self.theFirstFlippedCard = chosenCardIdx
-//                self.theSecondFlippedCard = nil
-//            } else if let theFirstFlippedCard = theFirstFlippedCard {
-//                //One of the card is already flipped
-//                self.theSecondFlippedCard = chosenCardIdx
-//
-//                if(cards[theFirstFlippedCard].match(cards[chosenCardIdx])) {
-//                    //match
-//                    cards[theFirstFlippedCard].isMatched = true
-//                    cards[chosenCardIdx].isMatched = true
-////                    self.theFirstFlippedCard = nil
-////                    self.theSecondFlippedCard = nil
-//                }
-//            } else {
-//                theFirstFlippedCard = chosenCardIdx
-//            }
-//            if let theOtherFlippedCardIndex = theOtherFlippedCardIndex {
-//                if cards[chosenCardIdx].match(cards[theOtherFlippedCardIndex]) {
-//                    // Found a match
-//                    print("Found a Match: Other \(theOtherFlippedCardIndex) \(cards[theOtherFlippedCardIndex].content) == chosen Other \(chosenCardIdx) \(cards[chosenCardIdx].content)")
-//                    cards[chosenCardIdx].isFlipped = true
-//                    cards[chosenCardIdx].isMatched = true
-//                    cards[theOtherFlippedCardIndex].isMatched = true
-//                    self.theOtherFlippedCardIndex = nil
-//                    print(cards)
-//                }
-//                else {
-//                    // No Match
-//                    print("No Match: Other \(theOtherFlippedCardIndex)")
-//                    self.cards[chosenCardIdx].isFlipped = false
-//                    self.cards[theOtherFlippedCardIndex].isFlipped = false
-//                }
-//            } else {
-//                // No other card filpped, this is the only card flipped
-//                theOtherFlippedCardIndex = chosenCardIdx
-//                cards[chosenCardIdx].isFlipped.toggle()
-//                print("the only filppied card \(String(describing: theOtherFlippedCardIndex))")
-//            }
-            
+        }
+    }
+    
+    mutating private func refreshScore(_ card1: Card<CardContent>, _ card2: Card<CardContent>) {
+        if (card1.match(card2)) {
+            score += 2
+        } else {
+            score += card1.seen ? -1 : 0
+            score += card2.seen ? -1 : 0
         }
     }
     
     mutating func generateCards(theme: CardsTheme<CardContent>) {
-        cards.removeAll()
-        for idx in 0..<(min(numPairsOfCards, theme.contents.count)) {
-            cards.append(Card<CardContent>(id: idx * 2    , content: theme.contents[idx]))
-            cards.append(Card<CardContent>(id: idx * 2 + 1, content: theme.contents[idx]))
+        self.theme = theme
+        cards = []
+        let themeCards = theme.contents.shuffled()
+        for idx in 0..<(min(numPairsOfCards, themeCards.count)) {
+            cards.append(Card<CardContent>(id: idx * 2    , color: theme.color, content: themeCards[idx]))
+            cards.append(Card<CardContent>(id: idx * 2 + 1, color: theme.color, content: themeCards[idx]))
         }
-//        cards.shuffle()
+        cards.shuffle()
     }
-    
-    
 }
 
 extension Array {

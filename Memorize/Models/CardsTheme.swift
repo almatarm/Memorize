@@ -6,13 +6,13 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 struct CardsTheme<Content> {
     var name: String
     var icon: String
+    var color: Color
     var contents: [Content]
-    
     
     func shuffled() -> [Content] {
         contents.shuffled()

@@ -7,29 +7,47 @@
 
 import SwiftUI
 
-
 struct EmojiCardView : View {
-    let card: Card<String>
+    private let card: Card<String>
+    
+    init(_ card: Card<String>) {
+        self.card = card
+    }
     
     var body: some View {
-        let shape = RoundedRectangle(cornerRadius: 15)
-        ZStack {
-            if card.isMatched {
-                shape.foregroundColor(.green).opacity(0.5)
-            } else if card.isFlipped {
-                shape.foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3).foregroundColor(.cyan)
-                Text(card.content).font(.largeTitle)
-            } else if !card.isFlipped {
-                shape.foregroundColor(.cyan)
+        let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+        GeometryReader { geometry in
+            ZStack {
+                if card.isMatched {
+                    shape.opacity(DrawingConstants.opacity)
+                } else if card.isFlipped {
+                    shape.foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                        .foregroundColor(.cyan)
+                    Text(card.content).font(font(geometry))
+                } else if !card.isFlipped {
+                    shape.foregroundColor(.cyan)
+                }
             }
         }
-        .aspectRatio(2/3, contentMode: .fit)
+    }
+    
+    struct DrawingConstants {
+        static let fontScale: CGFloat = 0.80
+        static let lineWidth: CGFloat = 3
+        static let opacity: CGFloat = 0.0
+        static let cornerRadius: CGFloat = 15
+    }
+    
+    func font(_ geometry: GeometryProxy) -> Font {
+        Font.system(size: min(geometry.size.height, geometry.size.width)
+                    * DrawingConstants.fontScale)
     }
 }
-//
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardView()
-//    }
-//}
+
+struct CardView_Previews: PreviewProvider {
+    static let card = Card<String>(id: 33, isFlipped: true, color: .green, content: "🌦️")
+    static var previews: some View {
+        EmojiCardView(card).padding()
+    }
+}

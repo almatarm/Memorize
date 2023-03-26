@@ -9,11 +9,13 @@ import Foundation
 import SwiftUI
 
 struct Card<CardContent>: Identifiable where CardContent: Equatable  {
-    var id: Int
+    let id: Int
     
     var isFlipped = false
     var isMatched = false
-    var content: CardContent
+    var seen = false
+    var color: Color
+    let content: CardContent
     
     func match(_ other: Card<CardContent>) -> Bool {
         return content == other.content
