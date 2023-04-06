@@ -36,7 +36,7 @@ class EmojiGameVM: ObservableObject {
         game.choose(card)
     }
     
-    func newGame(theme: CardsTheme<String> =  EmojiThemes.randomTheme(), numPairsOfCards: Int = Int.random(in: 3...6)) {
+    func newGame(theme: CardsTheme<String> =  EmojiThemes.randomTheme(), numPairsOfCards: Int = Int.random(in: 3...8)) {
         game = Game<String>(numPairsOfCards: numPairsOfCards)
         game.generateCards(theme: theme)
     }

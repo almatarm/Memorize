@@ -19,18 +19,15 @@ struct GameView: View {
             
             Spacer()
 
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 64))]) {
-                    ForEach(emojiGame.cards) { card in
-                        EmojiCardView(card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                emojiGame.choose(card)
-                            }
+//            ScrollView {
+            AspectVGrid(items: emojiGame.cards, aspectRatio: 2/3) { card in
+                EmojiCardView(card)
+                    .padding(4)
+                    .onTapGesture {
+                        emojiGame.choose(card)
                     }
-                }
             }
-            
+                
             Spacer()
             
             HStack {

@@ -23,20 +23,24 @@ struct EmojiCardView : View {
                 } else if card.isFlipped {
                     shape.foregroundColor(.white)
                     shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                        .foregroundColor(.cyan)
+                        .foregroundColor(card.color)
+                    Pie(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 130), offsetAngle: Angle(degrees: -90))
+                        .foregroundColor(card.color)
+                        .opacity(0.40)
+                        .padding(4)
                     Text(card.content).font(font(geometry))
                 } else if !card.isFlipped {
-                    shape.foregroundColor(.cyan)
+                    shape.foregroundColor(card.color)
                 }
             }
         }
     }
     
     struct DrawingConstants {
-        static let fontScale: CGFloat = 0.80
+        static let fontScale: CGFloat = 0.76
         static let lineWidth: CGFloat = 3
         static let opacity: CGFloat = 0.0
-        static let cornerRadius: CGFloat = 15
+        static let cornerRadius: CGFloat = 10
     }
     
     func font(_ geometry: GeometryProxy) -> Font {
